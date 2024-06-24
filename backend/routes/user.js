@@ -105,20 +105,20 @@ const updateBody = zod.object({
     lastName: String
 })
 
-router.post("/", authMiddleware, async(req,res) => {
-    const { success } = updateBody.safeParse(req.body);
-    if(!success){
-        return res.status(411).json({
-            mssg:"wrong inputs"
-        })
-    }
-    await User.updateOne({ _id: req.userId },req.body);
+// router.put("/", authMiddleware, async(req,res) => {
+//     const { success } = updateBody.safeParse(req.body);
+//     if(!success){
+//         return res.status(411).json({
+//             mssg:"wrong inputs"
+//         })
+//     }
+//     await User.updateOne({ _id: req.userId },req.body);
 
-    res.json({
-        mssg:"updated successfully"
-    })
+//     res.json({
+//         mssg:"updated successfully"
+//     })
 
-})
+// })
 
 router.get("/bulk", async(req,res)=> {
     const filter = req.query.filter || "";
